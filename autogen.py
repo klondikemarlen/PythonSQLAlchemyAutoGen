@@ -14,11 +14,12 @@ from sqlalchemy import create_engine
 
 from base_classes import Base
 
-from jinja2 import Template
+
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+from non_declarative_objects import Hero, Order
 
 import pdb
-
-
             
             
 class BuildTable:
@@ -112,10 +113,15 @@ class BuildTable:
 
 ########## New Template concept.
 
-# base_template = BuildTable.template()
-# template = Template(base_template)
-# template.render(cls=Hero)
+# print(vars(Order))
 
+env = Environment(
+    loader=FileSystemLoader('templates'),
+    autoescape=select_autoescape(default_for_string=False, default=False)
+)
+template = env.get_template('generic.py')
+print(template.render(cls=Hero))
+exit()
 
 
 
