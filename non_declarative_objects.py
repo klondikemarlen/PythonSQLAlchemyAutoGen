@@ -189,7 +189,7 @@ class Order(object):
         
         
 class Hero(object):
-    class_attribute = 0
+    test_class_var = 0
     
     def __init__(self, user_id=0):
         """Make a new Hero object.
